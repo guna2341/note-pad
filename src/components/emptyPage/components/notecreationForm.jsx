@@ -27,6 +27,7 @@ export const NoteCreationForm = () => {
             setNoteName('');
             await addNote(noteName);
             navigate(`/`);
+            localStorage.setItem("auth", "logged-in");
         }
     };
 
