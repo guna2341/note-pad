@@ -1,8 +1,10 @@
-import { styled } from '@mui/material/styles';
-import Switch from '@mui/material/Switch';
-import useEditorStore from '../../store/globalStore';
+    import { styled } from '@mui/material/styles';
+    import Switch from '@mui/material/Switch';
+    import useEditorStore from '../../store/globalStore';
 
-const StyledSwitch = styled(Switch)(({ theme, darkmode }) => ({
+const StyledSwitch = styled(Switch, {
+    shouldForwardProp: (prop) => prop !== 'darkmode', // ⛔ don't pass darkmode to DOM
+})(({ theme, darkmode }) => ({
     width: 34.5,
     height: 20,
     padding: 0,
@@ -43,7 +45,6 @@ const StyledSwitch = styled(Switch)(({ theme, darkmode }) => ({
             ? '0 1px 3px 0 rgba(0,0,0,0.5)'
             : '0 1px 3px 0 rgba(0,0,0,0.1)',
     },
-
     '& .MuiSwitch-track': {
         paddingTop: 2,
         borderRadius: 20 / 2,
@@ -55,18 +56,19 @@ const StyledSwitch = styled(Switch)(({ theme, darkmode }) => ({
     },
 }));
 
-export const ProfileSwitch = ({ checked, onChange, ...props }) => {
-    const { darkMode } = useEditorStore();
 
-    return (
-        <StyledSwitch
-            focusVisibleClassName=".Mui-focusVisible"
-            disableRipple
-            checked={checked}
-            onChange={onChange}
-            darkmode={darkMode}
-            {...props}
-        />
-    );
-};
+    export const ProfileSwitch = ({ checked, onChange, ...props }) => {
+        const { darkMode } = useEditorStore();
+
+        return (
+            <StyledSwitch
+                focusVisibleClassName=".Mui-focusVisible"
+                disableRipple
+                checked={checked}
+                onChange={onChange}
+                darkmode={darkMode}
+                {...props}
+            />
+        );
+    };
 

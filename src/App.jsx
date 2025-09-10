@@ -1,6 +1,6 @@
 import './App.css';
 import LoginPage from './screens/loginPage';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import Main from './screens/main';
 import Protect from './protected_routes/protect';
 import ProfilePage from './screens/profilePage';
@@ -12,21 +12,25 @@ import { ShareNote } from './screens/editorDisplay';
 import NotePad from './screens/notePad';
 import { useLoginStore } from './store/loginStore';
 import { useEffect } from 'react';
+import secureLocalStorage from 'react-secure-storage';
+import { Logout } from './protected_routes/logout';
 
 function App() {
   const timer = useLoginStore(state => state.timer);
   const runTimer = useLoginStore(state => state.runTimer);
-
+  
   useEffect(() => {
     runTimer();
   }, [timer]);
+
+
   
   return (
     <div className="w-screen h-screen">
       <BrowserRouter>
         <Routes>
+          <Route element={<Logout/>} >
           <Route path='/login' element={<LoginPage />} />
-          
           <Route path='/onBoarding-flow' element={<OnboardingFlow />} />
           <Route path='/forgotPassword' element={<ForgotPassword />} />
           <Route path='/twoStepAuth' element={<TwoStepAuthentication />} />
@@ -36,6 +40,7 @@ function App() {
             <Route path='/profile' element={<ProfilePage />} />
             <Route path='/notes' element={<EmptyStatePage />} />
             <Route path='/note-pad/:id' element={<Main />} />
+          </Route>
           </Route>
         </Routes>
       </BrowserRouter>

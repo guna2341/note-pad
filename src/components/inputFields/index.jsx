@@ -32,7 +32,6 @@ export const InputField = React.forwardRef(({
   return (
     <TextField
       id={id}
-      // Use inputRef instead of ref for Material-UI TextField
       inputRef={ref}
       autoComplete={autocomplete}
       label={isSearchStyle ? undefined : label}
@@ -95,7 +94,7 @@ export const InputField = React.forwardRef(({
             WebkitTextFillColor: darkMode ? 'rgb(233, 213, 255) !important' : 'black !important',
             caretColor: darkMode ? 'rgb(233, 213, 255)' : 'black',
             borderRadius: 'inherit',
-            "-webkit-transition": "background-color 5000s ease-in-out 0s",
+            WebkitTransition: "background-color 5000s ease-in-out 0s",
             transition: "background-color 5000s ease-in-out 0s",
           },
           '&:-webkit-autofill:hover': {

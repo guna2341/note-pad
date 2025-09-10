@@ -1,10 +1,12 @@
-import { Navigate, Outlet, useLocation } from 'react-router-dom';
+import { Navigate, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import LoginPage from '../screens/loginPage';
-import { useEffect } from 'react';
+
 import secureLocalStorage from 'react-secure-storage';
+import { useEffect } from 'react';
 
 const Protect = () => {
     const token = secureLocalStorage.getItem("token");
+
     return token  ? <Outlet /> : <LoginPage />;
 }
 

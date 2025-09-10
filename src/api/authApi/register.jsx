@@ -20,6 +20,7 @@ export const AuthRegister = async (userName, email, password, twoFa, gender, cat
         const token = response?.data?.token;
         const userData = response?.data?.user;
         secureLocalStorage.setItem("token", response?.data?.token);
+        localStorage.setItem("auth","logged-in");
         secureLocalStorage.setItem("userName", userData?.name);
         secureLocalStorage.setItem("gender", userData?.gender);
         secureLocalStorage.setItem("loginId", userData?.id);

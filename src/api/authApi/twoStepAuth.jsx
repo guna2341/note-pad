@@ -26,6 +26,7 @@ export const TwoStepAuth = async (otp) => {
         const userData = response?.data?.userData;
         const token = response?.data?.token;
         secureLocalStorage.setItem("token", token);
+        localStorage.setItem("auth","logged-in");
         secureLocalStorage.setItem("userName", userData?.name);
         secureLocalStorage.setItem("gender", userData?.gender);
         secureLocalStorage.setItem("loginId", userData?.id);

@@ -83,6 +83,7 @@ const OnboardingFlow = () => {
 
   useEffect(() => {
     const fetchPersonas = async () => {
+      localStorage.removeItem("auth");
       secureLocalStorage.clear();
       const response = await getOnBoardingFlow();
       console.log(response)

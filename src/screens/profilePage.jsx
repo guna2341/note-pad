@@ -69,6 +69,7 @@ const ProfilePage = () => {
     }
 
     const handleLogout = () => {
+        localStorage.removeItem("auth");
         secureLocalStorage.clear();
         navigate('/login');
     };

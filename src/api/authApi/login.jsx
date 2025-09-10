@@ -27,6 +27,8 @@ import secureLocalStorage from "react-secure-storage";
                 const token = response?.data?.token;
                 const userData = response?.data?.userData;
                 persistStorage("token", response?.data?.token);
+                localStorage.setItem("auth","logged-in");
+                console.log("test")
                 persistStorage("userName", userData?.name);
                 persistStorage("loginId", userData?.id);
                 persistStorage("gender", userData?.gender);

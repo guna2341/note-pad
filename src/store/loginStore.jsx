@@ -29,10 +29,8 @@ export const useLoginStore = create((set, get) => ({
 
     runTimer: () => {
         const { timer, intervalId } = get();
-
         if (intervalId || timer <= 0) return; 
-
-        const id = setInterval(() => {
+            const id = setInterval(() => {
             const currentTime = get().timer;
             if (currentTime <= 1) {
                 clearInterval(get().intervalId);
@@ -57,6 +55,7 @@ export const useLoginStore = create((set, get) => ({
     },
 
     resetAll: () => {
+        localStorage.removeItem("auth");
         secureLocalStorage.clear();
         set({
             loginName: "",
@@ -102,7 +101,6 @@ export const useLoginStore = create((set, get) => ({
             onChange("password", password);
             return;
         }
-        console.log(password)
         const response = await Authentication(type,password);
         return response;
     },
