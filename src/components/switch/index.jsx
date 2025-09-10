@@ -3,7 +3,7 @@
     import useEditorStore from '../../store/globalStore';
 
 const StyledSwitch = styled(Switch, {
-    shouldForwardProp: (prop) => prop !== 'darkmode', // ⛔ don't pass darkmode to DOM
+    shouldForwardProp: (prop) => prop !== 'darkmode', 
 })(({ theme, darkmode }) => ({
     width: 34.5,
     height: 20,

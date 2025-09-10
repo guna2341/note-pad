@@ -2,12 +2,15 @@ import React, { useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
 import secureLocalStorage from 'react-secure-storage';
 
-export const Logout = () => {
+export const Auth = () => {
 
     useEffect(() => {
         const handleStorage = (event) => {
             if (event.key === "auth" && event.newValue === null) {
                 logout();
+            }
+            if (event.key == "auth" && event.newValue !== null) {
+                login();
             }
         }
 
@@ -16,6 +19,10 @@ export const Logout = () => {
             window.removeEventListener("storage", handleStorage);
         };
     }, []);
+
+    const login = () => {
+        window.location.href = "/";
+    };
 
     const logout = () => {
         window.location.href = "/login";

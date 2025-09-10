@@ -12,8 +12,7 @@ import { ShareNote } from './screens/editorDisplay';
 import NotePad from './screens/notePad';
 import { useLoginStore } from './store/loginStore';
 import { useEffect } from 'react';
-import secureLocalStorage from 'react-secure-storage';
-import { Logout } from './protected_routes/logout';
+import { Auth } from './protected_routes/auth';
 
 function App() {
   const timer = useLoginStore(state => state.timer);
@@ -29,7 +28,7 @@ function App() {
     <div className="w-screen h-screen">
       <BrowserRouter>
         <Routes>
-          <Route element={<Logout/>} >
+          <Route element={<Auth />} >
           <Route path='/login' element={<LoginPage />} />
           <Route path='/onBoarding-flow' element={<OnboardingFlow />} />
           <Route path='/forgotPassword' element={<ForgotPassword />} />
