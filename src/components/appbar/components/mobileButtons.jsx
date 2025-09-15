@@ -14,16 +14,15 @@ export const MobileButtons = ({ darkMode, handleMobileMenuOpen, handleProfile, h
                 <MoreVert fontSize="medium" />
             </IconButton>
 
-            <StyledTooltip title={"Customer Care"}>
+            {/* <StyledTooltip title={"Customer Care"}>
                 <IconButton
                     onClick={handleCustomerMenuOpen}
                     sx={{ color: darkMode ? "#fff" : "#000", padding: "6px", flexShrink: 0, marginLeft: "4px" }}
                 >
                     <Customer fontSize="medium" />
                 </IconButton>
-            </StyledTooltip>
+            </StyledTooltip> */}
 
- 
         </>
     )
 };

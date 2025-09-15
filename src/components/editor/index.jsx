@@ -112,7 +112,6 @@ const Texteditor = ({ onChange }) => {
         Highlight,
         Underline,
         ResizableImage,
-        // EmptyParagraphHandler, // Removed the custom extension for simplicity
     ], []);
 
     const handleUpdate = useCallback(({ editor, transaction }) => {
@@ -120,18 +119,13 @@ const Texteditor = ({ onChange }) => {
 
         onEditorChange("tabSaved", false);
 
-        // Enhanced handling for empty paragraphs and spaces
         let htmlContent = editor.getHTML();
 
-        // Replace completely empty paragraphs with paragraphs containing a zero-width space
         htmlContent = htmlContent.replace(/<p><\/p>/g, '<p>&#8203;</p>');
 
-        // Ensure paragraphs with only whitespace are preserved
         htmlContent = htmlContent.replace(/<p>(\s+)<\/p>/g, '<p>$1&#8203;</p>');
 
-        // Handle multiple spaces within paragraphs
         htmlContent = htmlContent.replace(/(<p[^>]*>)(.*?)(<\/p>)/g, (match, opening, content, closing) => {
-            // Replace multiple spaces with non-breaking spaces, but keep at least one regular space
             const processedContent = content.replace(/  +/g, (spaces) => {
                 return spaces.split('').map((_, index) =>
                     index === 0 ? ' ' : '&nbsp;'
@@ -253,7 +247,7 @@ const Texteditor = ({ onChange }) => {
                 <div className="flex-grow overflow-auto h-full w-full scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 dark:scrollbar-thumb-purple-600 dark:scrollbar-track-gray-800 dark:bg-gray-800 bg-gray-50 border border-gray-300 dark:border-gray-800 rounded-lg">
                     <TextEditorSkeleton />
                 </div>
-                <EditorToolKit editor={editor} />
+                {/* <EditorToolKit editor={editor} /> */}
             </div>
         );
     }
@@ -271,13 +265,13 @@ const Texteditor = ({ onChange }) => {
             >
                 <EditorContent
                     editor={editor}
-                    className="h-full text-wrap whitespace-pre-wrap" // Added whitespace-pre-wrap
+                    className="h-full text-wrap whitespace-pre-wrap" 
                 />
             </div>
-            <EditorToolKit
+            {/* <EditorToolKit
                 editor={editor}
                 onToolbarAction={markToolbarAction}
-            />
+            /> */}
         </div>
     );
 };
