@@ -109,6 +109,17 @@ export const useTextEditorStore = create((set, get) => ({
     getShareNote: async (uuid) => {
         const response = await ShareNote(uuid);
         return response;
+    },
+
+    reset: () => {
+        set({
+            tabSaved: true,
+            notesummary: {},
+            notesLoading: {},
+            linkModal: false,
+            saveEditorLoading: false,
+            textNoteId: -1,
+        });
     }
       
 }));

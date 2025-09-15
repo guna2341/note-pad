@@ -13,6 +13,7 @@ import NotePad from './screens/notePad';
 import { useLoginStore } from './store/loginStore';
 import { useEffect } from 'react';
 import { Auth } from './protected_routes/auth';
+import { useTextEditorStore } from './store/textEditorStore';
 
 function App() {
   const timer = useLoginStore(state => state.timer);

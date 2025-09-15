@@ -7,6 +7,7 @@ import { AccountManagementSection, NotificationSection } from '../components/pro
 import { Check } from '@mui/icons-material';
 import useEditorStore from '../store/globalStore';
 import secureLocalStorage from 'react-secure-storage';
+import { useTextEditorStore } from '../store/textEditorStore';
 
 const ProfilePage = () => {
     
@@ -18,6 +19,7 @@ const ProfilePage = () => {
     const loginId = useLoginStore(state => state.loginId);
     const updateProfile = useLoginStore(state => state.updateProfile);
     const darkMode = useEditorStore(state => state.darkMode);
+    const logout = useLoginStore(e => e.logout);
 
     const navigate = useNavigate();
     const fileInputRef = useRef(null);
@@ -69,6 +71,7 @@ const ProfilePage = () => {
     }
 
     const handleLogout = () => {
+        logout();
         localStorage.removeItem("auth");
         secureLocalStorage.clear();
         navigate('/login');

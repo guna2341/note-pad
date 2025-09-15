@@ -1,6 +1,9 @@
 import { create } from "zustand";
 import { Authentication, EditProfile, OnboardingFlow, TwoStepAuth } from "../api";
 import secureLocalStorage from "react-secure-storage";
+import useEditorStore from "./globalStore";
+import { useNavbarStore } from "./navbarStore";
+import { useTextEditorStore } from "./textEditorStore";
 
 export const useLoginStore = create((set, get) => ({
     isUserLoggedIn: secureLocalStorage.getItem("isUserLoggedIn"),
@@ -134,6 +137,13 @@ export const useLoginStore = create((set, get) => ({
         persistStorage("twoFa", two_fa);
         onChangeLoaders("isProfileLoading", false);
         return response;
+    },
+    logout: () => {
+        localStorage.removeItem("auth");
+        secureLocalStorage.clear();
+        useEditorStore.getState().reset();
+        useNavbarStore.getState().reset();
+        useTextEditorStore.getState().reset();
     }
 }));
 

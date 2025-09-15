@@ -27,7 +27,6 @@ export const LoginForm = ({
     handleTogglePasswordVisibility,
     switchAuthMode
 }) => {
-    const navLoaders = useNavbarStore(e => e.loaders);
 
     // Validation function
     const validateForm = () => {

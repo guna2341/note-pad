@@ -64,7 +64,6 @@ export const SecuritySection = ({tempTwoFa,setTempTwoFa}) => {
         setPasswordSent(p => ({ ...p, sent: true, loading: false, msg: `Please wait ${formatTime(timer)} to try again` }));
         startTimer(300);
     }   
-    console.log(tempTwoFa)
     return (
         <FormSection title="Security Settings" darkMode={darkMode}>
             <Box className="p-5">

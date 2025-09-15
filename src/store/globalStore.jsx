@@ -117,6 +117,15 @@ const useEditorStore = create((set, get) => ({
     setSearch: (val) => {
         set({ search: val });
     },
+    reset: () => {
+        set({
+            userDetails: {},
+            isSidebarOpen: false,
+            data: [],
+            search: "",
+            charactersTotalCount: 0,
+            isLoading: false,})
+    }
 }));
 
 export default useEditorStore;

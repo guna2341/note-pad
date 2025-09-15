@@ -27,7 +27,10 @@ export const useNavbarStore = create((set, get) => ({
 
     getNotes: async () => {
         const { loginId } = useLoginStore.getState();
-        const { setLoading } = get();
+        const { setLoading, data } = get();
+        if (data.length > 0) {
+            return;
+        }
         setLoading("isNotesLoading", true);
         const response = await GetNotes(loginId);
         if (response?.data?.notes) {
@@ -80,5 +83,16 @@ export const useNavbarStore = create((set, get) => ({
                 }
                 setLoading("isDeleteLoading", false);
             return response;
+    },
+        
+    reset: () => {
+        set({
+            isSideBarOpen: false,
+            data: [],
+            currentNote: "",
+            notePadVisited: false,
+            searchquery: "",
+            noteId: "",
+        })
         }
     }));

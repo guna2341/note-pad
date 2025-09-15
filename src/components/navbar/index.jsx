@@ -48,19 +48,20 @@ export const Navbar = ({ notePad,share = true }) => {
         }
     }, [navigate, onNavbarChange]);
 
+
     useEffect(() => {
         async function getNote() {
             const response = await getNotes();
             const localUuid = secureLocalStorage.getItem("uuid");
-            if (localUuid && noteId && !notePad) {
+            if (localUuid && noteId) {
                 handleNavigate(localUuid, noteId);
                 onNavbarChange("currentNote", localUuid);
                 setId(localUuid);
                 onNavbarChange("noteId", noteId);
             }
-            else if (!notePad) {
+            else if (response?.data?.notes?.length > 0) {
                 setId(response?.data?.notes[0]?.uuid);
-                onNavbarChange("currentNote", response?.data?.note[0]?.uuid);
+                onNavbarChange("currentNote", response?.data?.notes[0]?.uuid);
                 onNavbarChange("noteId", response?.data?.notes[0]?.id);
             }
 

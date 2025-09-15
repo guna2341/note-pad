@@ -190,7 +190,9 @@ const Texteditor = ({ onChange }) => {
             try {
                 if (notesummary[noteId]) {
                     editor.commands.setContent(notesummary[noteId], false);
-                } else {
+                    return;
+                }
+                else {
                     const response = await getNoteContent(loginId, noteId);
                     const content = response?.data?.notes || "<p>Start Writing...</p>";
                     editor.commands.setContent(content, false);

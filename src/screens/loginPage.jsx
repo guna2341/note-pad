@@ -8,7 +8,7 @@ import {
 import useEditorStore from '../store/globalStore';
 import { cn } from '../components/cn';
 import { useLoginStore } from '../store/loginStore';
-import { VideoComponent,LoginSwitch, LoginHeader, LoginForm, SignupForm } from '../components';
+import { VideoComponent, LoginSwitch, LoginHeader, LoginForm, SignupForm } from '../components';
 import { Snackbar } from '../components';
 import secureLocalStorage from 'react-secure-storage';
 
@@ -141,6 +141,12 @@ const LoginPage = () => {
   };
 
   const validatePassword = (password) => {
+    // Skip password validation for login
+    if (formState.isLogin) {
+      return !password ? "Password is required" : "";
+    }
+
+    // Keep full validation for signup
     const errors = [];
     if (!password) return "Password is required";
     const hasLength = password.length >= 8;
@@ -199,8 +205,25 @@ const LoginPage = () => {
 
   async function handleFormSubmit(e) {
     e.preventDefault();
+
     if (formState.isLogin) {
-      await handleAuth('login');
+      // For login, only validate email and password presence
+      const emailError = validateEmail(formData.loginEmail);
+      const passwordError = !formData.loginPass ? "Password is required" : "";
+
+      setFormState(prev => ({
+        ...prev,
+        formSubmitted: true,
+        errors: {
+          ...prev.errors,
+          email: emailError,
+          password: passwordError
+        }
+      }));
+
+      if (!emailError && !passwordError) {
+        await handleAuth('login');
+      }
     }
     else if (validateForm()) {
       await handleAuth('register');
@@ -215,7 +238,7 @@ const LoginPage = () => {
         response = await authentication("login");
         if (!response.state && response.message) {
           setSnackBar({
-            variant: response.state ? "success" : "error",
+            variant: "error",
             state: true,
             msg: response.message
           })

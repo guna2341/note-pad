@@ -15,12 +15,14 @@ export const RightSection = ({
     handleCustomerMenuOpen,
     onSave
 }) => {
+
     const navigate = useNavigate();
     const saveEditorLoading = useTextEditorStore(e => e.saveEditorLoading);
     
     const handleProfile = () => {
         navigate('/profile');
     };
+
       const [saved, setSaved] = useState(false);
         useEffect(() => {
             let timer;
@@ -73,8 +75,7 @@ export const RightSection = ({
                     handleSaveClick={handleSaveClick}
                     handleProfile={handleProfile}
                     handleCustomerMenuOpen={handleCustomerMenuOpen}
-                        onSave={onSave}
-
+                    onSave={onSave}
                 />
             )}
         </div>
