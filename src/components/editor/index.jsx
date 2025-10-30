@@ -247,7 +247,7 @@ const Texteditor = ({ onChange }) => {
                 <div className="flex-grow overflow-auto h-full w-full scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 dark:scrollbar-thumb-purple-600 dark:scrollbar-track-gray-800 dark:bg-gray-800 bg-gray-50 border border-gray-300 dark:border-gray-800 rounded-lg">
                     <TextEditorSkeleton />
                 </div>
-                {/* <EditorToolKit editor={editor} /> */}
+                <EditorToolKit editor={editor} />
             </div>
         );
     }
@@ -268,10 +268,10 @@ const Texteditor = ({ onChange }) => {
                     className="h-full text-wrap whitespace-pre-wrap" 
                 />
             </div>
-            {/* <EditorToolKit
+            <EditorToolKit
                 editor={editor}
                 onToolbarAction={markToolbarAction}
-            /> */}
+            />
         </div>
     );
 };

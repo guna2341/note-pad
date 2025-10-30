@@ -53,14 +53,14 @@ export const DesktopButtons = ({
                 </IconButton>
             </StyledTooltip>
 
-            {/* <StyledTooltip title={"Customer Care"}>
+            <StyledTooltip title={"Customer Care"}>
                 <IconButton
                     onClick={handleCustomerMenuOpen}
                     sx={{ color: darkMode ? "#fff" : "#000", padding: "6px", flexShrink: 0, marginLeft: "7px" }}
                 >
                     <Customer fontSize="medium" />
                 </IconButton>
-            </StyledTooltip> */}
+            </StyledTooltip>
 
             <StyledTooltip title={"Profile"}>
                 <IconButton

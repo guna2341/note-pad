@@ -79,7 +79,6 @@ export const Appbar = () => {
                 <div className="flex justify-between items-center w-full box-border">
                     <LeftSection  />
 
-
                     <RightSection
                         isMobile={isMobile}
                         darkMode={darkMode}
