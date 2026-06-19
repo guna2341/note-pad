@@ -21,6 +21,9 @@ export const ButtonComponent = ({
   onKey,
 }) => {
 
+  const isMobile = useMediaQuery("(max-width:600px)");
+
+
   const darkMode = useEditorStore(e => e.darkMode);
 
   const colors = {
@@ -61,6 +64,7 @@ export const ButtonComponent = ({
         fontSize: '14px',
         fontFamily: 'monospace',
         fontWeight: 'medium',
+        height: isMobile ? '40px' : '45px',
         textTransform: 'none',
         boxShadow: currentColors.shadow,
         transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',

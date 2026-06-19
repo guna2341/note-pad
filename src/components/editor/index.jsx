@@ -184,6 +184,7 @@ const Texteditor = ({ onChange }) => {
             try {
                 if (notesummary[noteId]) {
                     editor.commands.setContent(notesummary[noteId], false);
+                    setIsContentLoaded(true);
                     return;
                 }
                 else {
@@ -206,7 +207,7 @@ const Texteditor = ({ onChange }) => {
     }, [noteId, loginId, editor, getNoteContent]);
 
     useEffect(() => {
-        if (!editor || !isContentLoaded || isUpdatingRef.current) return;
+        if (!editor || !isContentLoaded || isUpdatingRef.current || editor.isFocused) return;
 
         const storeContent = notesummary[noteId];
         if (storeContent && storeContent !== editor.getHTML()) {

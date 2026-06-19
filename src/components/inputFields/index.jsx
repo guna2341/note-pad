@@ -71,7 +71,7 @@ export const InputField = React.forwardRef(({
       sx={{
         width: '100%',
         '& .MuiInputBase-root': {
-          height: '40px',
+          height: '45px',
           padding: 0,
           paddingTop: isSearchStyle ? 0 : "3px",
           borderRadius: isSearchStyle ? "24px" : "6px",
@@ -81,7 +81,7 @@ export const InputField = React.forwardRef(({
           transition: 'all 0.2s ease-in-out',
         },
         '& .MuiInputBase-input': {
-          height: '40px',
+          height: '45px',
           paddingLeft: isSearchStyle ? '16px' : '10px',
           margin: 0,
           fontSize: isSearchStyle ? '14px' : '15px',
@@ -108,9 +108,9 @@ export const InputField = React.forwardRef(({
           },
         },
         '& .MuiFormLabel-root': {
-          fontSize: '14px',
+          fontSize: '16px',
           paddingLeft: 0,
-          paddingTop: '5px',
+          paddingTop: '6px',
           margin: 0,
           transform: 'translate(14px, 5px) scale(1)',
           color: hasError
@@ -127,6 +127,7 @@ export const InputField = React.forwardRef(({
           color: darkMode ? 'rgb(233, 213, 255)' : '#000000'
         },
         '& .MuiFormLabel-root.Mui-focused': {
+          transform: 'translate(12px, -15.5px) scale(0.9)',
           color: hasError
             ? (darkMode ? '#FCA5A5' : '#DC2626')
             : (darkMode ? 'rgb(233, 213, 255)' : '#0b6bcb')

@@ -63,6 +63,8 @@ export const Navbar = ({ notePad,share = true }) => {
                 setId(response?.data?.notes[0]?.uuid);
                 onNavbarChange("currentNote", response?.data?.notes[0]?.uuid);
                 onNavbarChange("noteId", response?.data?.notes[0]?.id);
+                secureLocalStorage.setItem("uuid", response?.data?.notes[0]?.uuid)
+                if (response?.data?.notes[0]?.id && response?.data?.notes[0]?.uuid) handleNavigate(response?.data?.notes[0]?.uuid, response?.data?.notes[0]?.id);
             }
 
         }

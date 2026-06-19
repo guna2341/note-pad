@@ -319,7 +319,7 @@ const LoginPage = () => {
           darkMode ? "bg-gray-800" : "bg-white"
         )}>
           <LoginSwitch isMobile={isMobile} toggleLeftPanel={toggleLeftPanel} setDarkMode={setDarkMode} darkMode={darkMode} />
-          <div className="flex-1 flex flex-col justify-center px-6 sm:px-10 lg:px-16">
+          <div className="flex-1 flex flex-col justify-center px-6 sm:px-10 lg:px-24 max-sm: mt-10">
             <LoginHeader darkMode={darkMode} isLogin={formState.isLogin} />
             {formState.isLogin ? (
               <>
