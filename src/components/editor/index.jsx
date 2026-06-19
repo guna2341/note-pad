@@ -204,6 +204,7 @@ const Texteditor = ({ onChange }) => {
         }
 
         loadNote();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [noteId, loginId, editor, getNoteContent]);
 
     useEffect(() => {
