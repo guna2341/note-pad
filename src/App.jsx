@@ -1,6 +1,6 @@
 import './App.css';
 import LoginPage from './screens/loginPage';
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Main from './screens/main';
 import Protect from './protected_routes/protect';
 import ProfilePage from './screens/profilePage';
@@ -13,7 +13,7 @@ import NotePad from './screens/notePad';
 import { useLoginStore } from './store/loginStore';
 import { useEffect } from 'react';
 import { Auth } from './protected_routes/auth';
-import { useTextEditorStore } from './store/textEditorStore';
+
 
 function App() {
   const timer = useLoginStore(state => state.timer);
@@ -21,7 +21,7 @@ function App() {
   
   useEffect(() => {
     runTimer();
-  }, [timer]);
+  }, [timer, runTimer]);
 
 
   

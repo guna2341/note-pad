@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import useEditorStore from "../store/globalStore";
-import { useNavbarStore } from "../store/navbarStore";
 import { BackgroundDecorations, BackgroundPattern, EmptyStateContent, Footer, PageBorders } from "../components";
 import { useLoginStore } from "../store/loginStore";
 import secureLocalStorage from "react-secure-storage";
@@ -20,7 +18,7 @@ const EmptyStatePage = () => {
         }
       }
     }
-  }, []);
+  }, [isUserLoggedIn, navigate]);
 
 
   return (

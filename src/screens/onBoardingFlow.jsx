@@ -97,7 +97,7 @@ const OnboardingFlow = () => {
       }
     };
     fetchPersonas();
-  }, []);
+  }, [getOnBoardingFlow]);
 
   const steps = [
     {

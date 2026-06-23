@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
-import secureLocalStorage from 'react-secure-storage';
 
 export const Auth = () => {
 
@@ -9,7 +8,7 @@ export const Auth = () => {
             if (event.key === "auth" && event.newValue === null) {
                 logout();
             }
-            if (event.key == "auth" && event.newValue !== null) {
+            if (event.key === "auth" && event.newValue !== null) {
                 login();
             }
         }

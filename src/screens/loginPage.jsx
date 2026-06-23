@@ -32,7 +32,7 @@ const LoginPage = () => {
       }
     }
     getNote();
-  }, []);
+  }, [navigate, token]);
 
   // login store
   const authentication = useLoginStore(e => e.authentication);

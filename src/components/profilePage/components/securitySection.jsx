@@ -29,7 +29,7 @@ export const SecuritySection = ({tempTwoFa,setTempTwoFa}) => {
             onChange("timer", 0);
             secureLocalStorage.setItem("timer", 0);
         }
-     },[]);
+     }, [onChange, timer]);
 
     const handleTwoFa = () => {
         setTempTwoFa(!tempTwoFa);

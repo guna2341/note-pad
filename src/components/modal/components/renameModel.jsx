@@ -271,7 +271,7 @@ export const RenameModal = ({ open, onClose, onRename, placeholder = "Enter new 
                     Cancel
                 </Button>
                 <ButtonComponent
-                    btnText={heading == "Rename File" ? "Rename" : "Create Note"}
+                    btnText={heading === "Rename File" ? "Rename" : "Create Note"}
                     handleClick={handleRename}
                     styles={{
                         width: "120px",

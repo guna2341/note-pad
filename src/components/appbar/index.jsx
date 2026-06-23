@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { AppBar, Toolbar, useMediaQuery } from "@mui/material";
 import useEditorStore from "../../store/globalStore";
-import { logo } from '../../assets';
 import { cn, ShareModal, SaveModal } from "../../components";
 import { useTextEditorStore } from "../../store/textEditorStore"; 
 import { CustomerMenu, LeftSection, MobileMenu, RightSection } from "./components";
-import { useLocation } from "react-router-dom";
 
 export const Appbar = () => {
     const [customerAnchorEl, setCustomerAnchorEl] = useState(null);

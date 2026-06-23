@@ -11,8 +11,7 @@ import {
   Redo,
   BulletList,
   Italic,
-  OrderedList,
-  Code
+  OrderedList
 } from '../../../assets';
 import EditorButton from './editorButton';
 import { fontFamilyOptions, fontSizes } from '../../../utils';
@@ -149,8 +148,6 @@ const EditorToolKit = ({ editor, onToolbarAction }) => {
         if (editor.state.selection.empty) {
           // Force the font family to persist for new text
           const { state } = editor;
-          const { selection } = state;
-          const { $from } = selection;
 
           // Get current text style attributes and add font family
           const currentAttrs = editor.getAttributes('textStyle');

@@ -7,7 +7,7 @@ import secureLocalStorage from "react-secure-storage";
 
 
     export const AuthLogin = async (email, password) => {
-        const { onChange, onChangeLoaders, persistStorage } = useLoginStore.getState(); 
+        const { onChangeLoaders, persistStorage } = useLoginStore.getState(); 
         try {
             onChangeLoaders("isLoginLoading", true);
             const response = await axios.post(`${AUTH_URL}/login`, {

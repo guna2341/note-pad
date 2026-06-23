@@ -1,7 +1,6 @@
 import React from 'react';
 import { ButtonComponent } from '../../../components';
 import useEditorStore from '../../../store/globalStore';
-import { Height } from '@mui/icons-material';
 
 const EditorButton = ({ handleClick, btnText, classes, handlePressed }) => {
   const darkMode = useEditorStore(e => e.darkMode); 

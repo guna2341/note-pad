@@ -1,9 +1,7 @@
 import React from "react";
-import useEditorStore from "../../../store/globalStore"; 
 
 const NoTabsFound = () => {
 
-    const { search } = useEditorStore();
 
     return (
         <div className="flex flex-col items-center justify-center h-full p-6 text-center">

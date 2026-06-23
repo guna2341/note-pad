@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import { ArrowBack } from "@mui/icons-material";
 import { cn } from "../../cn";
 import { ButtonComponent } from "../../button";
@@ -50,14 +50,8 @@ export const VerificationForm = ({
         inputRefs.current[lastIndex].focus();
     };
 
-    useEffect(() => { 
-        if (verificationCode.length == 6) {
-            handleVerificationSubmit(new Event("submit"));
-        }
-    },[verificationCode]);
- 
-    const handleVerificationSubmit = async (e) => {
-        e.preventDefault();
+    const handleVerificationSubmit = useCallback(async (e) => {
+        if (e) e.preventDefault();
         if (verificationCode.join("").length !== 6) {
             setErrorMessage("Please enter all 6 digits of the verification code");
             return;
@@ -73,7 +67,13 @@ export const VerificationForm = ({
         if (!result.success) {
             setErrorMessage(result.message);
         }
-    };
+    }, [verificationCode, secondsRemaining, handleVerify]);
+
+    useEffect(() => { 
+        if (verificationCode.length === 6) {
+            handleVerificationSubmit(new Event("submit"));
+        }
+    }, [verificationCode, handleVerificationSubmit]);
 
     const formatTime = (seconds) => {
         const mins = Math.floor(seconds / 60);

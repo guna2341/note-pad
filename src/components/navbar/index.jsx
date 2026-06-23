@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useMediaQuery } from "@mui/material";
-import useEditorStore from "../../store/globalStore";
 import { useNavbarStore } from "../../store/navbarStore";
 import MobileHeader from "./components/mobileHeader";
 import NoteActions from "./components/noteActions";
@@ -76,7 +75,7 @@ export const Navbar = ({ notePad,share = true }) => {
             setId(localUuid);
             onNavbarChange("noteId", noteId);
         }
-    }, []);
+    }, [getNotes, handleNavigate, noteId, notePad, notePadVisited, onNavbarChange]);
 
     const filteredData = data.filter(item =>
         item.note_name?.toLowerCase().includes(searchquery.toLowerCase())

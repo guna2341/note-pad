@@ -1,6 +1,6 @@
 import { Snackbar } from "@mui/material";
 import { SuccessScreen, ThemeToggle, VerificationForm, WaveBackground } from "../components/twostepAuth";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import useEditorStore from "../store/globalStore";
 import { useLoginStore } from "../store/loginStore";
@@ -8,6 +8,7 @@ import { useNavbarStore } from "../store/navbarStore";
 import secureLocalStorage from "react-secure-storage";
 
 const TwoStepAuthentication = () => {
+    const navigate = useNavigate();
     const isUserLoggedIn = useLoginStore(state => state.isUserLoggedIn);
     const twoStepAuth = useLoginStore(state => state.twoStepAuth);
     const authentication = useLoginStore(state => state.authentication);
@@ -22,7 +23,7 @@ const TwoStepAuthentication = () => {
                 }
             }
         }
-    }, []);
+    }, [isUserLoggedIn, navigate]);
 
     const [currentStage, setCurrentStage] = useState("verification");
     const [snackbar, setSnackbar] = useState({
@@ -46,7 +47,6 @@ const TwoStepAuthentication = () => {
     const { darkMode, setDarkMode } = useEditorStore();
     const { getNotes } = useNavbarStore();
     const email = secureLocalStorage.getItem("email");
-    const navigate = useNavigate();
 
     useEffect(() => {
         if (!secureLocalStorage.getItem("otpExpiryTime")) {
@@ -87,47 +87,7 @@ const TwoStepAuthentication = () => {
         };
     }, [email, navigate]);
 
-    useEffect(() => {
-        const checkAndRequestOtp = async () => {
-            const otpInitiated = secureLocalStorage.getItem("otpInitiated");
-            if (!otpInitiated) {
-                await handleResendCode();
-            }
-        };
-
-        checkAndRequestOtp();
-    }, []);
-
-    useEffect(() => {
-        if (isTimerRunning && secondsRemaining > 0) {
-            const timer = setTimeout(() => {
-                setSecondsRemaining(prev => {
-                    const newTime = prev - 1;
-                    if (newTime <= 0) {
-                        setIsTimerRunning(false);
-                        return 0;
-                    }
-                    return newTime;
-                });
-            }, 1000);
-
-            return () => clearTimeout(timer);
-        }
-    }, [isTimerRunning, secondsRemaining]);
-
-    const handleVerify = async (otp) => {
-        const response = await twoStepAuth(otp);
-        if (response.state) {
-            setCurrentStage("success");
-            clearOtpData();
-            return { success: true };
-        }
-        else {
-            return { success: false, message: response.message };
-        }
-    };
-
-    const handleResendCode = async () => {
+    const handleResendCode = useCallback(async () => {
         try {
             const result = await authentication("login");
             if (result && !result.error) {
@@ -163,6 +123,46 @@ const TwoStepAuthentication = () => {
                 title: "Error"
             });
             return false;
+        }
+    }, [authentication, email]);
+
+    useEffect(() => {
+        const checkAndRequestOtp = async () => {
+            const otpInitiated = secureLocalStorage.getItem("otpInitiated");
+            if (!otpInitiated) {
+                await handleResendCode();
+            }
+        };
+
+        checkAndRequestOtp();
+    }, [handleResendCode]);
+
+    useEffect(() => {
+        if (isTimerRunning && secondsRemaining > 0) {
+            const timer = setTimeout(() => {
+                setSecondsRemaining(prev => {
+                    const newTime = prev - 1;
+                    if (newTime <= 0) {
+                        setIsTimerRunning(false);
+                        return 0;
+                    }
+                    return newTime;
+                });
+            }, 1000);
+
+            return () => clearTimeout(timer);
+        }
+    }, [isTimerRunning, secondsRemaining]);
+
+    const handleVerify = async (otp) => {
+        const response = await twoStepAuth(otp);
+        if (response.state) {
+            setCurrentStage("success");
+            clearOtpData();
+            return { success: true };
+        }
+        else {
+            return { success: false, message: response.message };
         }
     };
 

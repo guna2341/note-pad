@@ -14,7 +14,6 @@ export const useLoginStore = create((set, get) => ({
     twoFa: JSON.parse(secureLocalStorage.getItem("twoFa")),
     notification: false,
     categoryId: secureLocalStorage.getItem("categoryId"),
-    onBoardingData: [],
     firstLogin: false,
     loginId: secureLocalStorage.getItem("loginId"),
     token: secureLocalStorage.getItem("token"),

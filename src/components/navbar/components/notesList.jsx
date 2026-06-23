@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { cn } from "../../cn";
 import NoTabsFound from "./noTabs";
 import NoteItem from "./noteItems";

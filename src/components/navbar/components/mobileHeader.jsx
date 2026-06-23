@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import useEditorStore from '../../../store/globalStore';
-import { cn, InputField } from '../../../components';
+import { InputField } from '../../../components';
 import { SearchIcon } from '../../../assets/svgs/searchIcon';
 import { logo } from '../../../assets';
 import { useNavbarStore } from '../../../store/navbarStore';
@@ -19,7 +18,7 @@ const MobileHeader = () => {
         <div>
                 <div className="flex items-center justify-between p-2 pl-4 border-b border-gray-200 dark:border-gray-700">
                    <div className="flex gap-4 items-center text-blue-500 dark:text-purple-400 text-lg text-nowrap">
-                                           <img src={logo} className="h-10" />
+                                           <img src={logo} className="h-10" alt="SP Notepad logo" />
                                            SP Notepad
                     </div>    
                     <button

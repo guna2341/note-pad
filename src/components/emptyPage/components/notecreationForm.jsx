@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import { Add } from '@mui/icons-material';
 import { InputField } from '../../inputFields';
 import { ButtonComponent } from '../../button';

@@ -16,7 +16,7 @@ const NoteActions = ({ setNewNote, newNote, loading, notePad }) => {
             ) : (
                     <div className="w-full text-center mb-[-4px] hidden md:block">
                     <div className="flex gap-4 items-center text-blue-500 dark:text-purple-400 text-lg text-nowrap">
-                        <img src={logo} className="h-10" />
+                        <img src={logo} className="h-10" alt="SP Notepad logo" />
                         SP Notepad
                         </div>    
                    <hr className="border border-gray-300 dark:border-gray-700 rounded-md mt-2" />

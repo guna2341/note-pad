@@ -2,7 +2,6 @@ import { StyledTooltip } from "../../toolTip";
 import { IconButton } from "@mui/material";
 import { MoreVert } from "@mui/icons-material";
 import { Customer } from "../../../assets";
-import { useParams } from "react-router-dom";
 
 export const MobileButtons = ({ darkMode, handleMobileMenuOpen, handleProfile, handleCustomerMenuOpen, onSave, saveEditorLoading }) => {
     return (

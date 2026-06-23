@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
-import { Box, Typography, Avatar } from '@mui/material';
-import { Security, Notifications, AddAPhoto } from '@mui/icons-material';
+import React from 'react';
+import { Box, Typography } from '@mui/material';
+import { Security, Notifications } from '@mui/icons-material';
 import { cn } from '../../../components';
 import { useLoginStore } from '../../../store/loginStore';
 import useEditorStore from '../../../store/globalStore';
@@ -13,9 +13,6 @@ export const ProfileCard = ({
     const notification = useLoginStore(state => state.notification);
     const userName = useLoginStore(state => state.userName);
     const email = useLoginStore(state => state.email);
-    const handleAvatarClick = () => {
-        fileInputRef.current.click();
-    };
     return (
         <Box className={cn(
             "p-6 rounded-xl shadow-lg z-10 relative",

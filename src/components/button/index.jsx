@@ -1,7 +1,6 @@
 import { Button, CircularProgress } from '@mui/material';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useMediaQuery } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
 import useEditorStore from '../../store/globalStore';
 
 export const ButtonComponent = ({

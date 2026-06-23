@@ -9,7 +9,6 @@ import { ProfileSwitch } from "../components";
 import { SunIcon } from "../assets/svgs/sun";
 import { MoonIcon } from "../assets/svgs/moon";
 import { ButtonComponent } from "../components/button";
-import { useLoginStore } from "../store/loginStore";
 
 const ForgotPassword = () => {
     const [email, setEmail] = useState("");

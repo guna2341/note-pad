@@ -11,7 +11,6 @@ import {
     Login,
 } from '@mui/icons-material';
 import { LoginButton, ButtonComponent, InputField } from '../../../components';
-import { useNavbarStore } from '../../../store/navbarStore';
 
 export const LoginForm = ({
     darkMode,

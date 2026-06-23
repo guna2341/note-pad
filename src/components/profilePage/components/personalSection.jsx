@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, MenuItem, Select, FormControl, InputLabel } from '@mui/material';
+import { Box, MenuItem, Select, FormControl } from '@mui/material';
 import { Edit, Check } from '@mui/icons-material';
 import { InputField, ButtonComponent } from '../../../components';
 import FormSection from './formSection';

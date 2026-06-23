@@ -7,7 +7,7 @@ import { AccountManagementSection, NotificationSection } from '../components/pro
 import { Check } from '@mui/icons-material';
 import useEditorStore from '../store/globalStore';
 import secureLocalStorage from 'react-secure-storage';
-import { useTextEditorStore } from '../store/textEditorStore';
+
 
 const ProfilePage = () => {
     
@@ -26,7 +26,7 @@ const ProfilePage = () => {
 
     const [edit, setEdit] = useState(true);
     const [tempTwoFa, setTempTwoFa] = useState(twoFa);
-    const [previewImage, setPreviewImage] = useState('');
+
     const [showPassword, setShowPassword] = useState(false);
     const [snackbarOpen, setSnackbarOpen] = useState(false);
     const [snackbarMessage, setSnackbarMessage] = useState('');
@@ -112,7 +112,6 @@ const ProfilePage = () => {
                         <ProfileCard
                             twoFa={twoFa}
                             notification={notification}
-                            previewImage={previewImage}
                             fileInputRef={fileInputRef}
                         />
                     </Box>

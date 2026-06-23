@@ -25,7 +25,7 @@ export const ShareNote = () => {
             setLoading(false);
         }
         getNote();
-    }, []);
+    }, [params.id, shareNote]);
 
     return (
         <div className='min-h-screen relative'>
@@ -44,7 +44,7 @@ export const ShareNote = () => {
             <div className="relative z-10 py-8 px-4 h-full">
                 <div className="flex gap-4 justify-between items-center mb-6">
                     <div className="flex items-center gap-3">
-                        <img src={logo} className="h-[50px]  md:h-[72px]" />
+                        <img src={logo} className="h-[50px]  md:h-[72px]" alt="SPNotz logo" />
                         <span className="text-[25px] font-semibold font-mono dark:text-white text-gray-800 hidden sm:block">SPNotz</span>
                     </div>
                     <div className='flex items-center gap-4'>
